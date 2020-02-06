@@ -4,7 +4,7 @@
   "description": "Book of tutorials",
   "scripts": {
     "build": "gitbook build src build && gitbook build --format json src build/json",
-    "serve": "gitbook serve src build"
+    "dev": "gitbook serve src build"
   },
   "repository": {
     "type": "git",
