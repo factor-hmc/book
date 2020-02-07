@@ -11,15 +11,6 @@ code
 ```
 ?
 
-Even math, maybe?  A \(x\), $y$, and
-\[
-z
-\]
-and
-$$
-w.
-$$
-
 nice.
 
 - bullets
@@ -34,3 +25,8 @@ nice.
 
 
 link to [page](a.md)
+
+factorial implementation
+```factor
+dup [ dup 1 = f = ] [ 1 - dup rot * swap ] while drop
+```
