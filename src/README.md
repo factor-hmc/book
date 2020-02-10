@@ -1,32 +1,4 @@
 # The Factor Programming Language
 
-Hello!
-
-I can do *italics* and **bold**.
-
-What about `code` and 
-
-```factor
-code
-```
-?
-
-nice.
-
-- bullets
-- bullets
-  1. nums
-  2. nums
-  
-## secondary
-
-> quote
-> quote
-
-
-link to [page](a.md)
-
-factorial implementation
-```factor
-: fact ( n -- n! ) dup [ dup 1 = f = ] [ 1 - dup rot * swap ] while drop ;
-```
+This is the Factor Programming Language.  There will be better
+descriptive text here.  Tutorial sections on the left.
