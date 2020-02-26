@@ -33,14 +33,14 @@ on our current stack.  This code pushes 7 to the stack, applies the operation 5 
 We see the the value 6 on our stack has been duplicated.  The **dup** function will duplicated the most recent item on the stack, and push the copy on the stack. **Factor** offers many simple, yet powerful functions which can give users more control over the stack.  You can see a brief explanation for some of the more important functions below:
 
 ```
-dup ( x -- x x ) //Duplicate the most recent value on the stack and pushes the copy to the stack.
-drop ( x -- ) //Removes the most recent value from the stack.
-swap ( x y -- y x ) //Swaps the order to the last two elements on the stack
-over ( x y -- x y x ) //Duplicates the second most recent value and pushes it onto the stack
-dupd ( x y -- x x y ) //Duplicates the second most recent value and adds it to the stack as the second most recent value.
-swapd ( x y z -- y x z ) // Swaps the posistions of the second and third most recent values on the stack.
-nip ( x y -- y ) // Removes the second most recent value on the stack
-rot ( x y z -- y z x ) //Makes the third most recent value, the first, the second most recent value the third, and the first most recent value the second.
--rot ( x y z -- z x y ) //Makes the third most recent value the second, the second most recent value the first, and the first most recent value the third.
-2dup ( x y -- x y x y ) // This duplicate the second and first most recent values on the stack and pushes then to the stack in that order.
+dup ( x -- x x ) !Duplicate the most recent value on the stack and pushes the copy to the stack.
+drop ( x -- ) !Removes the most recent value from the stack.
+swap ( x y -- y x ) !Swaps the order to the last two elements on the stack
+over ( x y -- x y x ) !Duplicates the second most recent value and pushes it onto the stack
+dupd ( x y -- x x y ) !Duplicates the second most recent value and adds it to the stack as the second most recent value.
+swapd ( x y z -- y x z ) ! Swaps the posistions of the second and third most recent values on the stack.
+nip ( x y -- y ) ! Removes the second most recent value on the stack
+rot ( x y z -- y z x ) !Makes the third most recent value, the first, the second most recent value the third, and the first most recent value the second.
+-rot ( x y z -- z x y ) !Makes the third most recent value the second, the second most recent value the first, and the first most recent value the third.
+2dup ( x y -- x y x y ) ! This duplicate the second and first most recent values on the stack and pushes then to the stack in that order.
 ```
