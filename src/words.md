@@ -1,5 +1,5 @@
 ## Words
-As like most Programming languages, Factor gives users the ability to write functions.  In Factor, functions are known as **words**.  Let's take a look at a simple word **add_div** which takes three numerical inputs which divides one input by the sum of the other two:
+As like most Programming languages, Factor gives users the ability to write functions.  In Factor, functions are known as **words**.  Let's take a look at a simple word **add_div** which takes three numerical inputs and divides one input by the sum of the other two:
 
 ```factor
 : add_div ( a b c -- a/(b+c) ) + / ;
