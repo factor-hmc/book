@@ -8,7 +8,8 @@ Like most tutorials for a new programming language, we will write a program that
 This passes the string "Hello World" to the word **print**  However, this is too easy.  Let's write a program which can let the user print "Hello_World" as many times as they want.  We will also print out a number right after each "Hello world" to prove we are printing out the correct number of strings.  To begin, let's create a program that prints out "Hello World" multiple times.  Let's say we want to print out "Hello World" 5 times.  One way we could do this is to write:
 
 ```factor
-"Hello World" dup dup dup dup print print print print print
+"Hello World" dup dup dup dup print print
+ print print print
 ```
 
 The word **dup** in this code duplicates the "Hello World" string.  Since we have **dup** 4 times, we have a total of 5 "Hello World" strings on the stack. Each **print** prints out a single "Hello World" string (this also removes it from the stack).
