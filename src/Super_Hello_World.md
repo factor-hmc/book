@@ -5,14 +5,14 @@ Like most tutorials for a new programming language, we will write a program that
 "Hello World" print
 ```
 
-This passes the string "Hello World" to the word **print**  However, this is too easy.  Let's write a program which can let the user print "Hello_World" as many times as they want.  We will also print out a number right after each "Hello world" to prove we are printing out the correct number of strings.  To begin, let's create a program that prints out "Hello World" multiple times.  Let's say we want to print out "Hello World" 5 times.  One way we could do this is to write:
+This passes the string "Hello World" to the word **print** which then prints the string.  However, this is too easy.  Let's write a program which can let the user print "Hello_World" as many times as they want.  We will also print out a number right after each "Hello world" to prove we are printing out the correct number of strings.  To begin, let's create a program that prints out "Hello World" multiple times.  Let's say we want to print out "Hello World" 5 times.  One way we could do this is to write:
 
 ```factor
 "Hello World" dup dup dup dup print
  print print print print
 ```
 
-The word **dup** in this code duplicates the "Hello World" string.  Since we have **dup** 4 times, we have a total of 5 "Hello World" strings on the stack. Each **print** prints out a single "Hello World" string (this also removes it from the stack).
+The word **dup** in this code duplicates the "Hello World" string.  Since we have **dup** written 4 times, we have a total of 5 "Hello World" strings on the stack. Each **print** prints out a single "Hello World" string (this also removes it from the stack).
 
 While this code does accomplish the task of printing "Hello World" 5 times, it is very messy.  What we really want is some way to repeat the code ```"Hello World" print```.  Luckily, Factor gives us access to quotations and combinators.  A quotation is a piece of code that we treat as an individual unit that can be moved on the stack, and a combinator is a word which accepts a quotation as an input.  We can turn ```"Hello World" print``` into a quotation by writing:
 
@@ -20,7 +20,7 @@ While this code does accomplish the task of printing "Hello World" 5 times, it i
 [ "Hello World" print ]
 ```
 
-If we run this code, the quotation will be pushed to the stack.  Since we want to run this code multiple times, we can use the **times** combinator to accomplish this.  The **times** combinator takes in a number for the amount of times we want to run the quotation, and then the actual quotation.  Since we want to print "Hello World" 5 times, lets run the code:
+If we run this code, the quotation will be pushed to the stack.  Since we want to run this code multiple times, we can use the **times** combinator to accomplish this.  The **times** combinator takes in a number and a quotation.  The number represents the number of times we will run the quotation.  Since we want to print "Hello World" 5 times, lets run the code:
 
 ```factor
 5 swap
