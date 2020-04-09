@@ -3,3 +3,7 @@
 - [Vocabularies](vocabularies.md)
 - [Quotations and Combinator](quotations_combinators.md)
 - [Super Hello World](Super_Hello_World.md)
+- [About this project](about/README.md)
+  - [Motivation](about/motivation.md)
+  - [The Online Platform](about/online-platform.md)
+  - [The `tensors` library](about/tensors.md)
