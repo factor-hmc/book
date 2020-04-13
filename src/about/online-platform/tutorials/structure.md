@@ -9,6 +9,7 @@ are on the following topics:
  - Words, 
  - Vocabularies
  - Quotation and Combinators
+ 
 The second set combines these basic ideas and
 shows how one might approach coding a more complicated programming.
 We currently only have one tutorial for this set called "Super Hello
