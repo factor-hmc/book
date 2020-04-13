@@ -19,4 +19,7 @@
       - [Background & motivation](about/online-platform/foogle/background.md)
       - [The implementation](about/online-platform/foogle/implementation.md)
       - [Future work](about/online-platform/foogle/future.md)
-  - [The `tensors` library](about/tensors/README.md)
+  - [Numerical programming: the `tensors` library](about/tensors/README.md)
+    - [Methods & design decisions](abouts/tensors/methods.md)
+    - [Evaluation](abouts/tensors/evaluation.md)
+    - [Future work](abouts/tensors/future.md)
