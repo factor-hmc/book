@@ -1,3 +1,4 @@
+- [Table of Contents](Table_of_Contents.md)
 - [The Stack](the-stack.md)
 - [Words](words.md)
 - [Vocabularies](vocabularies.md)
