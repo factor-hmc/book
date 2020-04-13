@@ -4,6 +4,7 @@
 - [Vocabularies](vocabularies.md)
 - [Quotations and Combinator](quotations_combinators.md)
 - [Super Hello World](Super_Hello_World.md)
+- [Other Resources](Resources.md)
 - [About this project](about/README.md)
   - [The online platform](about/online-platform/README.md)
     - [Interpreter](about/online-platform/interpreter/README.md)
