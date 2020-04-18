@@ -40,4 +40,4 @@ series of operations to perform linear regression on the [Boston
 housing
 dataset](https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html).
 
-![Linear Regression on the Boston Housing Dataset](linreg.png)
+![Linear Regression on the Boston Housing Dataset](linear_regression.png)
