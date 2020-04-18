@@ -40,5 +40,4 @@ series of operations to perform linear regression on the [Boston
 housing
 dataset](https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html).
 
-(linear regression is not yet implemented for `math.matrices`, but
-insert graph and analysis here once it is)
+![Linear Regression on the Boston Housing Dataset](linreg.png)
