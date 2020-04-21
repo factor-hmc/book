@@ -1,5 +1,5 @@
 ## The Stack
-Factor is a stack based programming language.  The stack in Factor is an array of dynamically-typed values.  Programs in Factor use functions to manipulate the stack.  A Factor programmer can utilize the the stack to perform operations quickly. Pushing literals (like 8, and "hello") onto the stack is easy, as literals will push themselves onto the stack when code is run. Notice how running the code:
+Factor is a stack-based programming language.  The stack in Factor is an array of dynamically-typed values.  Programs in Factor use functions to manipulate the stack.  A Factor programmer can utilize the the stack to perform operations quickly. Pushing literals (like 8, and "hello") onto the stack is easy, as literals will push themselves onto the stack when code is run. Notice how running the code:
 
 ```factor
 8
@@ -22,7 +22,7 @@ When we push literals to the stack, we are not limited to adding one literal at 
 
 pushes 8, 1, and 4 onto the stack.
 
-Functions  in Factor manipulate values on the stack.  For instance, if we run the code:
+Functions in Factor manipulate values on the stack.  For instance, if we run the code:
 
 ```factor
 +
@@ -34,7 +34,7 @@ We see that the two most recently pushed values (1, and 4) are removed from the 
 7 - + 
 ```
 
-on our current stack.  This code pushes 7 to the stack, applies the operation 5 - 7 which removes the literal 5 and 7 from the stack and pushes the result the result of 5 - 7 (-2) to the stack .  Then the program sums 8 + (-2), which removes both values from the stack and replaces them with their sum 6.  Thus, we end up with a stack containing only the literal 6.
+on our current stack.  This code pushes 7 to the stack, applies the operation - on the stack which removes the literal 5 and 7 from the stack and pushes the result the result of 5 - 7 (which is -2) to the stack.  Then the program applies the operation + to the stack.  This sums the remains two values on the stack.  It computes 8 + (-2), which removes both values from the stack and replaces them with their sum 6.  Thus, we end up with a stack containing only the literal 6.
 
 Factor gives programmers access to a collection of important functions that allow users to shape the stack.  There are a variety of functions that allow us to edit the positions and contents of entries in the stack.  One very useful function is **dup**.  If we run the code:
 
@@ -42,7 +42,7 @@ Factor gives programmers access to a collection of important functions that allo
 dup
 ```
 
-We see the the value 6 on our stack has been duplicated.  The **dup** function will duplicated the most recent item on the stack, and push the copy on the stack. Factor offers many simple, yet powerful functions which can give users more control over the stack.  You can see a brief explanation for some of the more important functions below:
+We see the the value 6 on our stack has been duplicated.  The **dup** function will duplicate the most recent item on the stack, and push the copy on the stack. Factor offers many simple, yet powerful functions which can give users more control over the stack.  You can see a brief explanation for some of the more important functions below:
 
 `
 dup ( x -- x x ) !Duplicate the most recent value on the stack and pushes the copy to the stack.

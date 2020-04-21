@@ -31,7 +31,7 @@ Here is a colletion of links you can use to learn more about Factor.
 
 
 
-**[ planet_factor ]** - A collection of Factor related blog: [https://planet.factorcode.org/](https://planet.factorcode.org/)
+**[ planet_factor ]** - A collection of Factor related blogs: [https://planet.factorcode.org/](https://planet.factorcode.org/)
 
 
 

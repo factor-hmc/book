@@ -1,5 +1,5 @@
 ## Super_Hello_World
-Like most tutorials for a new programming language, we will write a program that prints "Hello World!".  In Factor, writing this program is easy! All we need to type is:
+Like most beginner tutorials for a programming language, we will write a program that prints "Hello World!".  In Factor, writing this program is easy! All we need to type is:
 
 ```factor
 "Hello World" print
@@ -50,17 +50,17 @@ This should print "Hello World" 7 times.  Now, lets update our function so that 
 USE: math.ranges
 ```
 
-Now, we should have access to the word **[a,b]** .  This word excepts two inputs, a lower bound and upper bound.  Our lower bound will always be 1 since we will start counting at 1, however our upper bound will be the user's input.  This world excepts the lower bound first, so we might need to utilize a **swap** to ensure that the inputs are in the proper order.  Now that we understand how to create a range of numbers, we can use a new combinator called **each** which applies a quotation to each element in a range.  This means that for each number in the range, we will run `"Hello World" print` with that number as an input.  We will want the print out that number.  We can do this with the world `.` We can simply add this word to our quotation:
+Now, we should have access to the word **[a,b]** .  This word excepts two inputs, a lower bound and upper bound.  Our lower bound will always be 1 since we will start counting at 1, however our upper bound will be the user's input.  This word excepts the lower bound first, so we might need to utilize a **swap** to ensure that the inputs are in the proper order.  Now that we understand how to create a range of numbers, we can use a new combinator called **each** which applies a quotation to each element in a range.  This means that for each number in the range, we will run `"Hello World" print` with that number as an input.  We will want the print out that number.  We can do this with the world `.` We can simply add this word to our quotation:
 `[ "Hello World" print . ]` Let us update our word to utilize the new range word, combinator, and quotation:
 
 ```factor
 : Super_HW ( n -- ) 1 swap [a,b] [ "Hello World" print . ] each ;
 ```
 
-Now if we run this word we should see it enumerate our print outs:
+Now if we run this word we should see it enumerate our print-outs:
 
 ```factor
 8 Super_HW
 ```
 
-It works!  We were not only able to say "Hello World", but we were able to say it as many times as we wanted with each print out numbered!
+It works!  We were not only able to say "Hello World", but we were able to say it as many times as we wanted with each print-out numbered!
