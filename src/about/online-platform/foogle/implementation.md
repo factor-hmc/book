@@ -35,6 +35,7 @@ The database generator is a simple script written in Factor that iterates over e
 
 #### Effect variables
 There are three possibilities for an effect variable’s value.
+
 | Variable Type                   | Value Type | Value Description                                                                                                                              |
 |---------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stack Effect Variable           | String     | A string describing the name of the variable.                                                                                                  |
