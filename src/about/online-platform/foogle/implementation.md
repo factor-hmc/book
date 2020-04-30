@@ -46,7 +46,21 @@ The generator creates an index of all functions that are in Factor when it is lo
 
 The database is an array of function objects. It is not too difficult to parse the database, but be aware that many values are heterogeneous (i.e. they can have more than one possible type). “in_var” for effect objects, for example, may be strings or the boolean value `false`.
 ### Search engine
-The search engine is a webserver written in Haskell using [Servant](https://www.servant.dev/). It first parses the database information. When it receives a query, it searches functions to find those with stack effect closest to the query. The searching is by edit distance from one stack effect to another, where insertions and deletions are disincentivized. Effect variables with matching types have the most incentive to being matched. If the types cannot be matched the engine attempts to match the names of the variables.
+The search engine is a webserver written in Haskell using [Servant](https://www.servant.dev/). It first parses the database information. When it receives a query, it first parses the query into a stack effect, then searches functions to find those with stack effect closest to the query.
+
+The parsing closely mimicks Factor's own parser for stack effects. Tokens, for example, must be space-separated. A general description of the form of stack effects can be found [at this webpage](https://docs.factorcode.org/content/article-effects.html). There are a few differences for Foogle's parser. First, it is more permissive in what types of dashes it accepts as a separator between in variables and out variables (it will accept unicode em dashes, as searching on a phone can generate those by accident). Second, it allows users to search by types as if they were writing a stack effect declaration for a [TYPED: function](https://docs.factorcode.org/content/word-TYPED__colon__,typed.html). This syntax is of the form `effVarName: type`. It also allows users to specify _multiple_ types for a given variable by separating the type with a bar `|`. These are presently treated as a disjunction (i.e. only one of the types needs to match). Finally, it does not properly figure out whether an effect has the property `terminated?`. It's very likely that adding this property just requires that you check if the last effect variable in the output effect is called `*`, but this wasn't confirmed.
+
+An example query showcasing most of the differing features of the parser is shown below. Comments are rendered after `!`, but this isn't valid syntax for the parser (although it could be extended to allow it).
+
+```
+( var1: boolean            ! declare types like in the TYPED: effect
+  var2: string | sequence  ! declare disjunction types
+  —                        ! em-dash instead of --
+  *                        ! parsed as a normal stack effect, when it probably should change the terminated? property
+)
+```
+
+The searching is by edit distance from one stack effect to another, where insertions and deletions are disincentivized. Effect variables with matching types have the most incentive to being matched. If the types cannot be matched the engine attempts to match the names of the variables.
 
 You can find the server code at [foogle/server](https://github.com/factor-hmc/foogle/tree/master/server). A summary of each file is provided below.
 
