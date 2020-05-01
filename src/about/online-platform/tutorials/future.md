@@ -14,7 +14,7 @@ now a good chunk of the code in the tutorials can be run on the
 interpreter.  However there are still some features of Factor which
 have not been implemented into the interpreter meaning if one was to
 follow the tutorials, they would need to have installed Factor on
-their computer.  One tutorial that suffers from this is the vocabularies tutorial.  The interpreter does not let a user run the '''USE:''' word to import any vocabularies.  Another place that has this issue is in the Super Hello World tutorial.  It runs into a similar problem as we create the word ``` : Super_HW ( n -- ) 1 swap [a,b] [ "Hello World" print . ] each ; ``` which requires the use of the word '''[a,b]''' from the math.ranges vocabulary and a combinator '''each''' which is from the sequences vocabulary.  It would make the learning experience much smoother
+their computer.  One tutorial that suffers from this is the vocabularies tutorial.  The interpreter does not let a user run the ```USE:``` word to import any vocabularies.  Another place that has this issue is in the Super Hello World tutorial.  It runs into a similar problem as we create the word ``` : Super_HW ( n -- ) 1 swap [a,b] [ "Hello World" print . ] each ; ``` which requires the use of the word ```[a,b]``` from the math.ranges vocabulary and a combinator ```each``` which is from the sequences vocabulary.  It would make the learning experience much smoother
 if this issues were fixed and we could type every line straight into the online interpreter.
 
 Another thing we would like to incorporate into our tutorials is user
