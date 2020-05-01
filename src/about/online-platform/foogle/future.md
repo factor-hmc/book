@@ -1,47 +1,31 @@
-## Future work
-Although Foogle currently is functioning, there is much room for
-improvement. Of its three parts, the database generator is the most
-fully-featured. The most-desired improvements lie in the search
-engine. There are a few open design questions for searching, as well
-as potential efficiency issues for larger queries.
+ ## Future work
+Although Foogle works, there is much room for improvement. Of its three parts, the database generator is the most fully-featured. The most-desired improvements lie in the search engine. There are a few open design questions for searching, as well as potential efficiency issues for larger queries.
 
 ### Database generator
-The database generator, though a rudimentary script, does successfully
-generate information for each function. !!! We are presently working
-on extracting the help documentation for the function’s stack effect
-(this should already be done by the time this post is released) !!!,
-after which we will have generated all the information that we want
-thus far. More information can be taken from functions as desired.
+The database generator, though a rudimentary script, does generate quite a bit of information for each function. There is more information that could be gleaned if you wanted to run more in-depth analyses of each function. For example, you could do natural language processing on the entire help page to get a better sense of what types or values might inhabit each stack effect variable in a function. Or you could run some sort of profiling that collects information on what the common types each stack effect variable in a function takes on. These would be rather involved with unclear benefits, so it is recommended that you first focus on improving the search engine or frontend.
 
+Any modification to the database generator would likely start with [foogle/make-database.factor](https://github.com/factor-hmc/foogle/blob/master/make-database.factor).
 ### Search engine
-The search engine is where the most improvement can happen. Searching
-presently is quite brittle, especially to reordering of parameters. It
-relies sometimes on matching the names of parameters, especially for
-parameters without any type information. For example, `elt` in the
-sample query exactly matches the name of the output parameter for
-`nth`; if it didn’t, `nth` would appear a little lower in the search
-results.
+The search engine is where the most improvement can happen. Searching presently is very brittle to reordering of parameters. Right now the searching is a modification of an edit distance algorithm, which requires the order to match. But you don’t always know the exact order of the input and output effects. One way of fixing this could be to do a bunch of searches with permuted orders and pick the best matching results from all of those searches. Factor functions don’t tend to have many arguments, but this would still very likely slow down the search speed, if not make searching intractably slow. So allowing reordering of parameters would possibly require a change to how the search is conducted. It would be worth trying the easy and quick fix (search permutations) and then attempting an overhaul if that is too slow.
 
-There is also more that can be done in terms of specifying the query:
-it would be nice to enable users to choose whether they’d like to
-search the names of functions, the stack effects, other features, or
-some combination.
+Searching relies sometimes on matching the names of parameters, especially for parameters without any type information. For example, if you were looking for `nth` but you had no clue what the _names_ of any of the stack effect variables could be, your query might look like `( foo: number bar: sequence -- baz )`. This returns a lot of extraneous results, although `nth` is in there somewhere. If you had even specified one or two appropriate names like “seq” instead of “sequence”, the search brings `nth` closer to the beginning. This isn’t an awful thing, but something to be aware of. Relying as little as possible on name matching is ideal, but it is unclear what the best direction is to avoid. 
 
-The search is also not optimized for efficiency. The query is compared
-to every function in Factor and the top few are returned. This is done
-by using a lazy merge sort. Presumably, some form of keying based on
-stack effect (even by relative size or complexity) would allow us to
-narrow down the results and make more performant queries. Searching at
-least isn’t on the order of minutes, but it is far from instant,
-sometimes taking a few seconds. This isn’t a problem now, when there
-are only a few users, but may be an issue in the future.
+There is also more that can be done in terms of specifying the query: it would be nice to enable users to choose whether they’d like to search the names of functions, the stack effects, other features, or some combination. Hoogle also offers the ability to narrow the search to a certain set of packages, and that would be helpful for Factor too (two sets that would be easy to generate would be `core` and `extras`, of course it could also allow for user-specified sets). Since the database tracks the vocabulary where the functions come from, filtering by package shouldn’t be too difficult.
 
+Add support to the parser for terminating effects (those which throw an error). This requires some research to be done on exactly how terminating effects are declared (we think it's stack effects whose last output effect variable is called `*`, but we're not sure) and then a modification to the parser in [foogle/src/Parse.hs](https://github.com/factor-hmc/foogle/blob/master/src/Parse.hs).
+
+Once terminating effects are done, both row variables and terminating effects can be searched for in the search engine. They are presently ignored by the search engine, but represented in the data types of stack effects. For terminating effects, the check is just as simple as identifying whether `effTerminated` matches for the two effects. For row variables, you can check if both effects have them and assign a negative cost if so, reducing the cost further if the row variables match in name. A similar negative cost can be generated if both effects don't have row variables. This will incentivize proper matches between effects.
+
+One interesting possibility for extending the querying is to add support for both disjunctions and conjunctions of types. Right now you can specify that a stack effect variable might be one of many types by using `|` (e.g. `var: string | boolean` indicates the variable can be either a `string` or a `sequence`). It might be useful to add an `&` that specifies that the variable _must_ be one of a type (e.g. `var: string & sequence` would indicate the variable has to match `string` and `sequence`), as well as support combinations of `&` and `|` such as `var: string & sequence | boolean` (where `&` has higher precedence). The utility would be that, though Factor can't expression concepts like "sequences of strings," you might be able to fake it by matching a variable which we guessed was a string or a sequence. You can start adding other boolean expressions too -- although I'm not sure at which point it starts to become superfluous. This would require changes just to the parser in [foogle/src/Parse.hs](https://github.com/factor-hmc/foogle/blob/master/src/Parse.hs) as well as work in [foogle/src/Search.hs](https://github.com/factor-hmc/foogle/blob/master/src/Search.hs).
+
+The search is also not optimized for efficiency. The query is compared to every function in Factor and the top few are returned. This is done by using a lazy merge sort. Presumably, some form of keying based on stack effect (even by relative size or complexity) would allow us to narrow down the results and make more performant queries. Searching at least isn’t on the order of minutes, but it is far from instant, sometimes taking a few seconds. This isn’t a problem now, when there are only a few users, but may be an issue in the future. Efficiency may be increased by changing the output type of the database.
+
+Any modification to the search logic would happen in [foogle/src](https://github.com/factor-hmc/foogle/tree/master/src) and would likely start with [foogle/src/Search.hs](https://github.com/factor-hmc/foogle/blob/master/src/Search.hs).
 ### Frontend
-There is also a lot that can be done for the frontend in terms of
-usability. Right now users have to search by typing in a well-formed
-stack effect query. It would be nice if they could also use a
-graphical interface to specify what the inputs and outputs are, as
-well as their types. The frontend would also benefit from some general
-beautification. It is not as important to improve the frontend as it
-is the search engine, as all of the business logic is in the search
-engine, but it would give a nice layer of polish.
+There is also a lot that can be done for the frontend in terms of usability. The current design for the frontend was created quickly to just render the search results. A complete overhaul would not be unreasonable. Some potential directions for changes or improvements are listed below.
+
+Right now users have to search by typing in a well-formed stack effect query. One possible change would be to use a graphical interface to specify what the inputs and outputs are, as well as their possible types. Each stack effect variable would be an element in the GUI that could be added or removed. Users would be able to specify the possible name of each element, as well as a list of its possible types.
+
+It would be nice to be able to have each search result have a button that, when clicked, causes the result to expand and show more information about the function (e.g. the documentation).
+
+It would be nice to render additional search results when scrolling down (perhaps not infinitely, since the correct function will hopefully be within the first few results, but more than the size of the page).
