@@ -5,8 +5,8 @@ like to improve.  The first is that we would like to create more
 tutorials which expand on the basic ideas we have taught and write
 more complicated programs like the Super Hello Word tutorial.  We
 think that showcasing the creation of more complicated projects will
-not only show new Factor programers how to approach building larger
-Factor, but show off what Factor is capable of.  Some potential tutorial ideas which expand on the ideas taught in our previous tutorials could be a tutorial which involves creating a simple vocabulary that contains several words or a tutorial which shows how to write a small “choose your own adventure” program that accepts inputs during runtime.  There are even more advanced Factor topics that could use a tutorial like how to write unit tests, or how to set up a class.
+not only show new Factor programmers how to approach building larger
+Factor program, but show off what Factor is capable of.  Some potential tutorial ideas which expand on the ideas taught in our previous tutorials could be a tutorial which involves creating a simple vocabulary that contains several words or a tutorial which shows how to write a small “choose your own adventure” program that accepts inputs during runtime.  There are even more advanced Factor topics that could use a tutorial like how to write unit tests, or how to set up a class.
 
 The second addition we would make is to ensure that every line of code
 presented in the tutorial can be run in the interpreter.  As of right
