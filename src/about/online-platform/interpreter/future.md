@@ -287,7 +287,11 @@ examples:
 Once Factor mechanics are replicated sufficiently in the web
 interpreter per the above points, we will be able to properly load
 existing Factor vocabularies (e.g., `combinators`, `sequences`,
-`math`, etc.).  The proposed method for doing so is as follows:
+`math`, etc.).  (Currently, only `kernel` and most of `math` are
+available in the web-interpreter, and they were ported manually with
+several dirty hacks, namely by pasting Factor code straight into Elm
+and deleting code that used unsupported features.)  The proposed
+method for doing so is as follows:
 
 - Implement a parsing word `USE:`, which calls a primitive "load
   vocabulary" instruction from the Elm-based runtime.
