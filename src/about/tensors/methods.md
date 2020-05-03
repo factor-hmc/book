@@ -9,7 +9,7 @@ However, neither vocabulary incorporates Factor’s static typing or allows for 
 
 ### Choosing an Implementation Language
 
-We decided to model our approach off of NumPy, given its prominence as a numerical programming library. We had two options for carrying out this project. We could either implement the vocabulary in native Factor or implement it in C and use Factor’s foreign function interface to access the C functions. This is the procedure used by libraries such as NumPy and SciPy. We benchmarked vector operations in Factor against those in C. Unoptimized Factor is much slower than C. However, we found that typed Factor, while still slower, can perform operations faster than unoptimized C code and within an order of magnitude of optimized C.
+We decided to model our approach off of NumPy, given its prominence as a numerical programming library. We had two options for carrying out this project. We could either implement the vocabulary in native Factor or implement it in C and use Factor’s foreign function interface to access the C functions. The latter is the procedure used by libraries such as NumPy and SciPy. We benchmarked vector operations in Factor against those in C. Unoptimized Factor is much slower than C. However, we found that typed Factor, while still slower, can perform operations faster than unoptimized C code and within an order of magnitude of optimized C.
 
 ![Factor vs. C](factor_vs_c.png)
 
@@ -27,13 +27,13 @@ To read more about how the vocabulary performed, including how it compared to Nu
 
 One of our main goals was ease of use. To do this, we tried to make a flexible and simple interface. We used multi-method dispatch when implementing element-wise operations so that they can take either two `tensor`s, or a number and a `tensor` in either order. 
 
-For example, the following code snippets all produce an output of `t{ 5 6 7 }:
+For example, the following code snippets all produce an output of `t{ 5 6 7 }`:
 - `t{ 0 1 2 } 5 t+`
 - `5 t{ 0 1 2 } t+`
 - `t{ 0 1 2 } t{ 5 5 5 } t+`
 
 We also implemented the basic words necessary to apply sequence operations and pretty printing. 
 
-`tensor`s can also be turned to and from nested arrays using a parsing word. Initialization of a one-dimensional `tensor` using the parsing word `t{` was shown above. A two-dimensional `tensor` can be initialized as follows: `t{ { 0 1 } { 2 3 } }`
+`tensor`s can be turned to and from nested arrays using a parsing word. Initialization of a one-dimensional `tensor` using the parsing word `t{` was shown above. A two-dimensional `tensor` can be initialized as follows: `t{ { 0 1 } { 2 3 } }`.
 
 The features implemented during this project cover only a small fraction of the features provided by a library like NumPy. To read more about possible future directions for this project, see the [future work](future.md) section.
