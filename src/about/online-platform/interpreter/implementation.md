@@ -12,19 +12,17 @@ If you're not familiar with the Elm architecture, it may be a good
 idea to [read about that](https://guide.elm-lang.org/architecture/)
 first (it's the same "architecture" that inspired the design of
 React/Redux, Vue/Vuex, and many other modern Javascript web
-frameworks) first.  The gist of the Elm architecture is this: the
+frameworks).  The gist of the Elm architecture is this: the
 entire application state (or "model"; this is stuff like the contents
 of every text field, the data to be displayed, the currently focused
-tab, etc.) is stored globally; every time an event happens (e.g., a
+tab, etc.) is stored globally. Every time an event happens (e.g., a
 button is clicked, the contents of a text field changes, an API call
 returns a result), a "message" is emitted, and the model is updated
-using an `update : Msg -> Model -> Model` function, which takes in a
+using an `update` function. This takes in a
 message and the current model and returns the _next_ model, or how the
-model should look after the message/event occurs.  Additionally, each
-time the model is updated, a `view : Model -> Html Msg` function is
-used to render the model to HTML (the type `Html Msg` indicates that
-interacting with UI elements such as buttons, text fields, and
-checkboxes in the rendered HTML emits messages of type `Msg`).
+model should look after the message/event occurs.  Each
+time the model is updated, a `view` function is
+used to render the model to HTML.
 
 ### The parts
 
@@ -32,7 +30,7 @@ The online interpreter platform comprises several sub-applications:
 one for the actual interpreter interface (`Terminal.elm`), one for
 loading tutorials (`Book.elm`), and one for interfacing with the
 Foogle API (`Foogle.elm`).  Each sub-application lives in its own
-Elm-architecture-like loop, with its own `Model` and `Msg` types and
+Elm-architecture-like loop, with its own model, messages, and
 `update` and `view` functions.  Occasionally, in order to have
 different sub-applications interact with each other (e.g., clicking on
 the `➦` arrow in a code block copies the code from the tutorials app
