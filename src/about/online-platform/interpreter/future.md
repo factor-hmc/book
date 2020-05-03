@@ -214,7 +214,6 @@ examples:
     action:
       
     ```elm
-    
     type Instruction 
       = Push Int
       | Call (() -> List Instruction)
@@ -228,7 +227,6 @@ examples:
     code _would not_ work in Elm:
     
     ```elm
-    
     type Instruction
       = Push Int
       | Call (List Instruction)
