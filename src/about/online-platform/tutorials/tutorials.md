@@ -1,7 +1,7 @@
 ##Tutorial Summaries  
 We have a quick summary of each of the current the tutorials below:
 
-###[The Stack](../../../../the-stack.md):
+###[The Stack](../../../the-stack.md):
 This tutorial explains the concept of the stack as well as how Factor Programming revolves around it.  We explain how one pushes and pops items from the stack and how a function applied to the stack will work.  We also give the user a collection of simple words which allow users to manipulate objects on the stack (dup, drop, swap … etc).
 ###[Words](words.md):
 In this section, we explain that Factor’s version of functions are known as words.  We then go on to explain how to write and use words.  Specifically, we go into depth about how to specify the correct number of inputs and outputs a word will have and how words manipulate inputs to produce a desired output.  We also walkthrough the process of writing a word step by step.
