@@ -1,9 +1,9 @@
 # The online Factor interpreter
 
 Suppose you're a newcomer to Factor (maybe you are), looking to try
-out Factor because you read on some John guy's blog post about
-interesting language/syntax features that Factor has or simply because
-you wanted to get a feel for what it was like to write Factor code.
+out Factor because you read on some blog post about the interesting
+language/syntax features that Factor has, or simply because you wanted
+to get a feel for what it was like to write Factor code.
 
 In order to do that, you would first have to download and install
 Factor on your computer—either from Factor's website, or by cloning
