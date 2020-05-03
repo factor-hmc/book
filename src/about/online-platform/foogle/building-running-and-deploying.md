@@ -11,7 +11,7 @@ $ stack build
 in the root.
 
 ### Running
-To run the server locally, set the port you want to host the server on (like 8000) as the environment variable PORT. For example, `$ export PORT=8001`. Then run
+To run the server locally, set the port you want to host the server on (like 8001) as the environment variable PORT. For example, `$ export PORT=8001`. Then run
 
 ```
 $ stack exec foogle-server
@@ -34,7 +34,7 @@ $ stack exec foogle-exe -- -h
 or
 
 ```
-$ stack exec foogle-exe -- -help
+$ stack exec foogle-exe -- --help
 ```
 
 If you want to run the interpreter and Foogle locally, follow the instructions on running the interpreter locally and change the `endpoint` variable in [`Foogle.elm`](https://github.com/factor-hmc/simple-interpreter/blob/master/src/Foogle.elm) to point to the localhost location (e.g. `http://localhost:8001`).
