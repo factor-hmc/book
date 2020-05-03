@@ -35,3 +35,5 @@ type it themselves.  We hope that the ease of running example code
 helps sidestep some common beginner mistakes like missing spaces or
 semicolons with little frustration. 
 
+While Foogle does not directly interact with the tutorials, it is a great resource that can introduce new Factor programmers to the variety of vocabularies and words that they have access too.  Newer programmers can use Foogle to look up words mentioned in the tutorials to learn about them as well as similar words.  Foogle will also help facilitate the next step in learning Factor after finishing the tutorials.  Factor users that take the next step and attempt their own projects will be able to search for desired words faster.  The interpreter, tutorials, and Foogle all are able to help ease programmers into Factor.
+
