@@ -21,7 +21,7 @@ aspects that could make the language more inviting to new programmers:
 lowering the installation barrier, adding more tutorials and learning
 materials, and creating a documentation search engine.
 
-Read more about this project [here](online-platform/README.md)
+Read more about this project [here](online-platform/README.md).
 
 ## The `tensors` Vocabulary
 
