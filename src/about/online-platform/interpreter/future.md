@@ -93,7 +93,7 @@ examples:
       `+` adds a "call the function `+` on the current stack contents"
       instruction to the end of the accumulator.
     - _If the token is a parsing word_, it is _not_ added to the
-      accumulator vector--instead, it is executed immediately, running
+      accumulator vector—instead, it is executed immediately, running
       special parsing primitives to parse code occurring after it and
       modifying the accumulator vector accordingly.  For instance, `{`
       interrupts normal Factor parsing, consumes tokens until a `}` is
@@ -125,7 +125,7 @@ examples:
   implementation:
 
   - _It's inefficient._ Concatenating lists takes O(n) time
-    (w.r.t. the length of the first list--Elm's `List` type is
+    (w.r.t. the length of the first list—Elm's `List` type is
     implemented internally as a singly-linked list, as in many
     functional languages of the same genre, e.g., Haskell and OCaml)
     and _doubles_ the memory used to store the definitions.  
@@ -135,7 +135,7 @@ examples:
     (whose instruction list contains a single built-in `drop`
     instruction, since `drop` is a primitive); then `x` will
     instruction list [i1, i2, ..., in, drop].  Note that instructions
-    `i1, ..., in` are stored _twice_--once in `w`, and once in `x`.
+    `i1, ..., in` are stored _twice_, once in `w`, and once in `x`.
 
     The _sensible_ approach is to instead keep a "reference" to words
     used in the definition and call those references, rather than
@@ -169,7 +169,7 @@ examples:
     stores names rather than actual instruction lists), since if we
     were to try to define a word `w` in terms of itself, we would
     first try to find `w` in the table of existing words and
-    concatenate `w` to itself--which would fail, since `w` is not yet
+    concatenate `w` to itself—which would fail, since `w` is not yet
     defined!  Or, if `w` were previously defined, redefining `w` in
     terms of "itself" doesn't actually recursively call itself;
     instead, wherever a "recursive" call to `w` is made, the
@@ -223,7 +223,7 @@ examples:
     ```
     
     compared to what the code _would_ look like if Elm supported
-    recursive definitions with laziness by default--note that this
+    recursive definitions with laziness by default. Note that this
     code _would not_ work in Elm:
     
     ```elm
@@ -261,7 +261,7 @@ examples:
   the quotation to actually define `add1`.
   
   Of course, it could be argued that this method allows for some
-  interesting behavior as well--but it is confusing and certainly
+  interesting behavior as well, but it is confusing and certainly
   doesn't match the expected Factor behavior.  So it should be
   changed.  Presumably, fixing parsing (see the first bullet point)
   and adding parsing words would fix this issue as well.
@@ -271,7 +271,7 @@ examples:
   seq' )` and doesn't parse any special tokens (e.g. `!` for
   mutability, `..` for row polymorphism).  It only accounts for
   space-delimited tokens separated by a `--`.  Furthermore, currently
-  nothing useful is done with the stack effect--at a minimum, there
+  nothing useful is done with the stack effect—at a minimum, there
   should be some form of stack-checking/stack-inference used to verify
   word definitions.
   
