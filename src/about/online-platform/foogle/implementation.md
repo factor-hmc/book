@@ -42,9 +42,9 @@ There are three possibilities for an effect variable’s value.
 | Typed Stack Effect Variable     | Array      | An array of two strings. The first is the name of the variable and the second is the type of the variable.                                     |
 | Quotation Stack Effect Variable | Array      | An array of a string and an object. The string is the name of the variable. The object is a stack effect object representing its stack effect. |
 
-The generator creates an index of all functions that are in Factor when it is loaded (those obtained from the function `all-words`). This should be all of the functions in the official Factor ecosystem.
+The generator creates a database of all functions that are in Factor when it is loaded (those obtained from the function `all-words`). This should be all of the functions in the official Factor ecosystem.
 
-The database is an array of function objects. It is not too difficult to parse the database, but be aware that many values are heterogeneous (i.e. they can have more than one possible type). “in_var” for effect objects, for example, may be strings or the boolean value `false`.
+This database is an array of function objects. It is not too difficult to parse the database, but be aware that many values are heterogeneous (i.e. they can have more than one possible type). “in_var” for effect objects, for example, may be strings or the boolean value `false`.
 ### Search engine
 The search engine is a webserver written in Haskell using [Servant](https://www.servant.dev/). It first parses the database information. When it receives a query, it first parses the query into a stack effect, then searches functions to find those with stack effect closest to the query.
 
