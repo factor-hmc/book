@@ -13,7 +13,7 @@ are on the following topics:
 The second set combines these basic ideas and
 shows how one might approach coding a more complicated program.
 We currently only have one tutorial for this set called ["Super Hello
-World"](Super_Hello_World.md) which walks through how someone might write a function which
+World"](../../../Super_Hello_World.md) which walks through how someone might write a function which
 prints something a certain number of times based on an input.  You can
 see a short summary of each tutorial in the [Tutorial Summaries](tutorials.md) section 
 of this report. We also have a ["Table of Contents"](../../../Table_of_Contents.md) section which gives
