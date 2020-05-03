@@ -46,6 +46,9 @@ The generator creates a database of all functions that are in Factor when it is 
 
 This database is an array of function objects. It is not too difficult to parse the database, but be aware that many values are heterogeneous (i.e. they can have more than one possible type). “in_var” for effect objects, for example, may be strings or the boolean value `false`.
 ### Search engine
+
+#### Overview
+
 The search engine is a webserver written in Haskell using [Servant](https://www.servant.dev/). It first parses the database information. When it receives a query, it first parses the query into a stack effect, then searches functions to find those with stack effect closest to the query.
 
 Parsing the database is not difficult, and follows the specification of the JSON values.
@@ -62,7 +65,9 @@ An example query showcasing most of the differing features of the parser is show
 )
 ```
 
-The searching is by edit distance from one stack effect to another, where insertions and deletions are disincentivized. Effect variables with matching types have the most incentive to being matched. If the types cannot be matched the engine attempts to match the names of the variables.
+Foogle conducts its searching using the metric of edit distance from one stack effect to another, where insertions and deletions are disincentivized. Effect variables with matching types have the most incentive to being matched. If the types cannot be matched, the engine attempts to match the names of the variables.
+
+#### Code description
 
 You can find the server code at [foogle/server](https://github.com/factor-hmc/foogle/tree/master/server). A summary of each file is provided below.
 
@@ -81,9 +86,10 @@ The main Foogle and searching logic is in
 
 [foogle/src/Infer.hs](https://github.com/factor-hmc/foogle/blob/master/src/Infer.hs) is where the search engine guesses types for the stack effect variables. This is done by inspecting their names and documentation.
 
-[foogle/src/Search.hs](https://github.com/factor-hmc/foogle/blob/master/src/Search.hs) is where the searching happens. Most of the code in this file is describing the various costs incurred or removed from matching of effect variables. The search itself is just taking the first `n` elements after lazily merge sorting by cost.
+[foogle/src/Search.hs](https://github.com/factor-hmc/foogle/blob/master/src/Search.hs) is where the searching happens. Most of the code in this file is describing the various costs incurred or removed from matching of effect variables. The search itself is just taking the first `n` elements after lazily merge sorting by cost (the fact that the sort is lazy is important since it can make fewer passes over the database).
 
 [foogle/src/Argparse.hs](https://github.com/factor-hmc/foogle/blob/master/src/Argparse.hs) is used for the command-line application.
+
 ### Frontend
 The frontend is a simple webpage written in Elm as part of the overall Factor Online Platform. It has rudimentary support for querying and rendering the server’s responses. It allows users to query by stack effect and specify the number of responses (up to 500, the server rejects requests for more in the interest of avoiding long response times).
 
