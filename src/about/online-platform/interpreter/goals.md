@@ -12,7 +12,7 @@ doesn't lend itself well to being ported online for two reasons:
   away with something as simple as "use a X-to-Javascript transpiler
   that someone else wrote" to translate the Factor interpreter to
   Javascript; instead, we would have to understand the mechanics of
-  Factor and write our own Factor interpreter--from scratch--in a
+  Factor and write our own Factor interpreter—from scratch—in a
   web-friendly language (Javascript, or something that compiles to
   Javascript).
 
@@ -27,7 +27,7 @@ goals:
   helpful error messages, interactivity);
 - supplement the interpreter with tutorials and
   documentation-searching tools (more in the Tutorials and Foogle
-  sections), a la online coding course platforms.  Furthermore, we
+  sections), à la online coding course platforms.  Furthermore, we
   decided to implement the interpreter in Elm, a functional
   programming language for web applications known for its type safety
   (virtually no runtime errors!), performance, and work in
