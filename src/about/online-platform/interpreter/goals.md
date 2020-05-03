@@ -28,7 +28,7 @@ goals:
 - supplement the interpreter with tutorials and
   documentation-searching tools (more in the Tutorials and Foogle
   sections), à la online coding course platforms.  Furthermore, we
-  decided to implement the interpreter in Elm, a functional
+  decided to implement the interpreter in [Elm](https://elm-lang.org/), a functional
   programming language for web applications known for its type safety
   (virtually no runtime errors!), performance, and work in
   user-friendly compilers and error messages.
