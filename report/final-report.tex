@@ -37,7 +37,6 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={Factor 2019-2020 Final Report},
-  hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
@@ -103,7 +102,7 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 
 \title{Factor 2019-2020 Final Report}
 \author{}
@@ -938,7 +937,13 @@ instructions on running the interpreter locally and change the
 \texttt{endpoint} variable in
 \href{https://github.com/factor-hmc/simple-interpreter/blob/master/src/Foogle.elm}{\texttt{Foogle.elm}}
 to point to the localhost location
-(e.g.~\texttt{http://localhost:8001}). \#\#\#\# Deploying Supposing that
+(e.g.~\texttt{http://localhost:8001}). 
+
+
+\hypertarget{deploying}{%
+\paragraph{Deploying}\label{deploying}}
+
+Supposing that
 ownership of the Heroku app was transferred to you, it should be
 sufficient to connect your Heroku account and
 \href{https://devcenter.heroku.com/articles/git}{push to the Heroku app
@@ -955,7 +960,7 @@ and make sure to configure the run file to build and run
 \href{https://hackernoon.com/for-all-the-world-to-see-deploying-haskell-with-heroku-7ea46f827ce}{This
 tutorial} may be helpful in setting the app up. Then change the
 \texttt{endpoint} variable in
-\texttt{Foogle.elm}{]}(https://github.com/factor-hmc/simple-interpreter/blob/master/src/Foogle.elm)
+\href{https://github.com/factor-hmc/simple-interpreter/blob/master/src/Foogle.elm}{\texttt{Foogle.elm}}
 to point to the new Heroku app.
 
 \hypertarget{implementation}{%
@@ -980,168 +985,138 @@ The database generator is a simple script written in Factor that
 iterates over each function and creates a JSON object documenting it.
 These objects are described below.
 
+Because of the way that pandoc converts Markdown tables to \LaTeX,
+the tables below have been instead rendered as bulleted lists. It might be
+easier to view them
+\href{https://factor.netlify.app/book/about/online-platform/foogle/implementation.md#function-objects}{online}.
+
 \hypertarget{function-objects}{%
 \subparagraph{Function objects}\label{function-objects}}
 
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-\begin{minipage}[b]{0.13\columnwidth}\raggedright
-Key\strut
-\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
-Value Type\strut
-\end{minipage} & \begin{minipage}[b]{0.64\columnwidth}\raggedright
-Value Description\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.13\columnwidth}\raggedright
-``name''\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
-String\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright
-Name of the function.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright
-``effect''\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
-Object or Boolean\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright
-If the function has a stack effect, an object representing it.
-Otherwise, the value \texttt{false}.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright
-``url''\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
-String\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright
-URL to the function's help page on the Factor documentation.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright
-``vocabulary''\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
-String\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright
-Name of the function's vocabulary (library).\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.13\columnwidth}\raggedright
-``vocabulary\_url''\strut
-\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
-String\strut
-\end{minipage} & \begin{minipage}[t]{0.64\columnwidth}\raggedright
-URL to the vocabulary's help page on the Factor documentation.\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{itemize}
+  \item \textbf{Key}: ``name''
+    \begin{itemize}
+      \item \textbf{Value Type}: String
+      \item \textbf{Value Description}: Name of the function.
+    \end{itemize}
+  \item \textbf{Key}: ``effect''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        Object or Boolean
+      \item \textbf{Value Description}: 
+        If the function has a stack effect, an object representing it.
+        Otherwise, the value \texttt{false}.
+    \end{itemize}
+  \item \textbf{Key}: ``url''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        String
+      \item \textbf{Value Description}: 
+      URL to the function's help page on the Factor documentation.
+    \end{itemize}
+  \item \textbf{Key}: ``vocabulary''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        String
+      \item \textbf{Value Description}: 
+      Name of the function's vocabulary (library).
+    \end{itemize}
+  \item \textbf{Key}: ``vocabulary\_url''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        String
+      \item \textbf{Value Description}: 
+      URL to the vocabulary's help page on the Factor documentation.
+    \end{itemize}
+\end{itemize}
 
 \hypertarget{stack-effect-objects}{%
 \subparagraph{Stack effect objects}\label{stack-effect-objects}}
 
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-\begin{minipage}[b]{0.07\columnwidth}\raggedright
-Key\strut
-\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\raggedright
-Value Type\strut
-\end{minipage} & \begin{minipage}[b]{0.78\columnwidth}\raggedright
-Value Description\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-``in''\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-Array\strut
-\end{minipage} & \begin{minipage}[t]{0.78\columnwidth}\raggedright
-List of input stack effect variables\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-``out''\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-Array\strut
-\end{minipage} & \begin{minipage}[t]{0.78\columnwidth}\raggedright
-List of output stack effect variables\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-``in\_var''\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-String or Boolean\strut
-\end{minipage} & \begin{minipage}[t]{0.78\columnwidth}\raggedright
-If the function has an input row variable, its name. Otherwise, the
-value \texttt{false}.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-``out\_var''\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-String or Boolean\strut
-\end{minipage} & \begin{minipage}[t]{0.78\columnwidth}\raggedright
-If the function has an output row variable, its name. Otherwise, the
-value \texttt{false}.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-``terminated?''\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-Boolean\strut
-\end{minipage} & \begin{minipage}[t]{0.78\columnwidth}\raggedright
-Does the function terminate in an error? Factor functions that do this
-usually have their output stack effect declared as \texttt{*}. See
-\href{https://docs.factorcode.org/content/word-decode-error\%2Cio.encodings.html}{this
-function} for an example.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.07\columnwidth}\raggedright
-``effect\_descriptions''\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-Object\strut
-\end{minipage} & \begin{minipage}[t]{0.78\columnwidth}\raggedright
-An object that has keys equal to the names of the stack effect variables
-and values equal to their description on the function's help page. It
-may not have all stack effect variables in it (in fact, it may have
-none).\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{itemize}
+  \item \textbf{Key}: ``in''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        Array
+      \item \textbf{Value Description}: 
+      List of input stack effect variables.
+    \end{itemize}
+  \item \textbf{Key}: ``out''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        Array
+      \item \textbf{Value Description}: 
+      List of output stack effect variables.
+    \end{itemize}
+  \item \textbf{Key}: ``in\_var''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        String or Boolean
+      \item \textbf{Value Description}: 
+      If the function has an input row variable, its name. Otherwise, the
+      value \texttt{false}.
+    \end{itemize}
+  \item \textbf{Key}: ``out\_var''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        String or Boolean
+      \item \textbf{Value Description}: 
+      If the function has an output row variable, its name. Otherwise, the
+      value \texttt{false}.
+    \end{itemize}
+  \item \textbf{Key}: ``terminated?''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        Boolean
+      \item \textbf{Value Description}: 
+      Does the function terminate in an error? Factor functions that do this
+      usually have their output stack effect declared as \texttt{*}. See
+      \href{https://docs.factorcode.org/content/word-decode-error\%2Cio.encodings.html}{this
+      function} for an example.
+    \end{itemize}
+  \item \textbf{Key}: ``effect\_descriptions''
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        Object
+      \item \textbf{Value Description}: 
+      An object that has keys equal to the names of the stack effect variables
+      and values equal to their description on the function's help page. It
+      may not have all stack effect variables in it (in fact, it may have
+      none).
+    \end{itemize}
+\end{itemize}
 
 \hypertarget{effect-variables}{%
 \subparagraph{Effect variables}\label{effect-variables}}
 
 There are three possibilities for an effect variable's value.
 
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-\begin{minipage}[b]{0.16\columnwidth}\raggedright
-Variable Type\strut
-\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\raggedright
-Value Type\strut
-\end{minipage} & \begin{minipage}[b]{0.70\columnwidth}\raggedright
-Value Description\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.16\columnwidth}\raggedright
-Stack Effect Variable\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-String\strut
-\end{minipage} & \begin{minipage}[t]{0.70\columnwidth}\raggedright
-A string describing the name of the variable.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.16\columnwidth}\raggedright
-Typed Stack Effect Variable\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-Array\strut
-\end{minipage} & \begin{minipage}[t]{0.70\columnwidth}\raggedright
-An array of two strings. The first is the name of the variable and the
-second is the type of the variable.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.16\columnwidth}\raggedright
-Quotation Stack Effect Variable\strut
-\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
-Array\strut
-\end{minipage} & \begin{minipage}[t]{0.70\columnwidth}\raggedright
-An array of a string and an object. The string is the name of the
-variable. The object is a stack effect object representing its stack
-effect.\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{itemize}
+  \item \textbf{Variable Type}: Stack Effect Variable
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        String
+      \item \textbf{Value Description}: 
+        A string describing the name of the variable.
+    \end{itemize}
+  \item \textbf{Variable Type}: Typed Stack Effect Variable
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        Array
+      \item \textbf{Value Description}: 
+        An array of two strings. The first is the name of the variable and the
+        second is the type of the variable.
+    \end{itemize}
+  \item \textbf{Variable Type}: Quotation Stack Effect Variable
+    \begin{itemize}
+      \item \textbf{Value Type}:
+        Array
+      \item \textbf{Value Description}: 
+        An array of a string and an object. The string is the name of the
+        variable. The object is a stack effect object representing its stack
+        effect.
+    \end{itemize}
+\end{itemize}
 
 The generator creates a database of all functions that are in Factor
 when it is loaded (those obtained from the function \texttt{all-words}).
@@ -1196,7 +1171,9 @@ valid syntax for the parser (although it could be extended to allow it).
 ( var1: boolean            ! declare types like in the TYPED: effect
   var2: string | sequence  ! declare disjunction types
   —                        ! em-dash instead of --
-  *                        ! parsed as a normal stack effect, when it probably should change the terminated? property
+  *                        ! parsed as a normal stack effect, 
+                           ! when it probably should change the 
+                           ! terminated? property
 )
 \end{verbatim}
 
