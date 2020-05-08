@@ -517,15 +517,18 @@ We have a quick summary of each of the current the tutorials below:
 
 #### [The Stack](https://factor.netlify.app/book/the-stack.md):
 This tutorial explains the concept of the stack as well as how Factor Programming revolves around it.  We explain how one pushes and pops items from the stack and how a function applied to the stack will work.  We also give the user a collection of simple words which allow users to manipulate objects on the stack (dup, drop, swap … etc).
+
 #### [Words](https://factor.netlify.app/book/words.md):
 In this section, we explain that Factor’s version of functions are known as words.  We then go on to explain how to write and use words.  Specifically, we go into depth about how to specify the correct number of inputs and outputs a word will have and how words manipulate inputs to produce a desired output.  We also walkthrough the process of writing a word step by step.
+
 #### [Vocabularies](https://factor.netlify.app/book/vocabularies.md):
 Here, we explore vocabularies and how they are essentially Factor’s version of a library.  This tutorial shows how to import entire vocabularies or single words from vocabularies to use in projects.
+
 #### [Quotations and Combinators](https://factor.netlify.app/book/quotations_combinators.md): 
 This tutorial covers quotations and combinators.  It shows users how to push blocks of code to the stack, and how combinators can make use of them as inputs.  It then showcases quotations and combinators in action with a walkthrough that shows the creation of a word which outputs a certain term in the fibonacci sequence based on a given input.  We believe that this section should highlight quotations and combinators as important tools when developing complex programs.
+
 #### [Super Hello World](https://factor.netlify.app/book/Super_Hello_World.md):
 This tutorial is inspired by the Hello World tutorial that every programming language seems to have.  After learning how to write a program that prints “hello world”, we then learn how to write a more complicated program which prints “hello world” a specific number of times.  This section explores the thought process a Factor programmer might go through when writing code.  This tutorial also acts as a review of the previous sections.
-
 
 ### Future work
 
@@ -666,6 +669,7 @@ There are three possibilities for an effect variable’s value.
 The generator creates a database of all functions that are in Factor when it is loaded (those obtained from the function `all-words`). This should be all of the functions in the official Factor ecosystem.
 
 This database is an array of function objects. It is not too difficult to parse the database, but be aware that many values are heterogeneous (i.e. they can have more than one possible type). “in_var” for effect objects, for example, may be strings or the boolean value `false`.
+
 #### Search engine
 
 ##### Overview
@@ -734,6 +738,7 @@ Although Foogle works, there is much room for improvement. Of its three parts, t
 The database generator, though a rudimentary script, does generate quite a bit of information for each function. There is more information that could be gleaned if you wanted to run more in-depth analyses of each function. For example, you could do natural language processing on the entire help page to get a better sense of what types or values might inhabit each stack effect variable in a function. Or you could run some sort of profiling that collects information on what the common types each stack effect variable in a function takes on. These would be rather involved with unclear benefits, so it is recommended that you first focus on improving the search engine or frontend.
 
 Any modification to the database generator would likely start with [foogle/make-database.factor](https://github.com/factor-hmc/foogle/blob/master/make-database.factor).
+
 #### Search engine
 The search engine is where the most improvement can happen. Searching presently is very brittle to reordering of parameters. Right now the searching is a modification of an edit distance algorithm, which requires the order to match. But you don’t always know the exact order of the input and output effects. One way of fixing this could be to do a bunch of searches with permuted orders and pick the best matching results from all of those searches. Factor functions don’t tend to have many arguments, but this would still very likely slow down the search speed, if not make searching intractably slow. So allowing reordering of parameters would possibly require a change to how the search is conducted. It would be worth trying the easy and quick fix (search permutations) and then attempting an overhaul if that is too slow.
 
@@ -750,6 +755,7 @@ One interesting possibility for extending the querying is to add support for bot
 The search is also not optimized for efficiency. The query is compared to every function in Factor and the top few are returned. This is done by using a lazy merge sort. Presumably, some form of keying based on stack effect (even by relative size or complexity) would allow us to narrow down the results and make more performant queries. Searching at least isn’t on the order of minutes, but it is far from instant, sometimes taking a few seconds. This isn’t a problem now, when there are only a few users, but may be an issue in the future. Efficiency may be increased by changing the output type of the database.
 
 Any modification to the search logic would happen in [foogle/src](https://github.com/factor-hmc/foogle/tree/master/src) and would likely start with [foogle/src/Search.hs](https://github.com/factor-hmc/foogle/blob/master/src/Search.hs).
+
 #### Frontend
 There is also a lot that can be done for the frontend in terms of usability. The current design for the frontend was created quickly to just render the search results. A complete overhaul would not be unreasonable. Some potential directions for changes or improvements are listed below.
 

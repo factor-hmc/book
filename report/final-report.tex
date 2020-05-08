@@ -106,8 +106,8 @@
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 
 \title{Factor 2019-2020 Final Report}
-\author{Max Denning, Cameron Krimsky, Cole Kurashige, Nandeeka Nayak, Kye Shi}
-\date{May 8th, 2020}
+\author{}
+\date{}
 
 \begin{document}
 \maketitle
@@ -723,30 +723,43 @@ This tutorial explains the concept of the stack as well as how Factor
 Programming revolves around it. We explain how one pushes and pops items
 from the stack and how a function applied to the stack will work. We
 also give the user a collection of simple words which allow users to
-manipulate objects on the stack (dup, drop, swap \ldots{} etc). \#\#\#\#
-\href{https://factor.netlify.app/book/words.md}{Words}: In this section,
-we explain that Factor's version of functions are known as words. We
-then go on to explain how to write and use words. Specifically, we go
-into depth about how to specify the correct number of inputs and outputs
-a word will have and how words manipulate inputs to produce a desired
-output. We also walkthrough the process of writing a word step by step.
-\#\#\#\#
-\href{https://factor.netlify.app/book/vocabularies.md}{Vocabularies}:
+manipulate objects on the stack (dup, drop, swap \ldots{} etc).
+
+\hypertarget{words}{%
+\paragraph{\texorpdfstring{\href{https://factor.netlify.app/book/words.md}{Words}:}{Words:}}\label{words}}
+
+In this section, we explain that Factor's version of functions are known
+as words. We then go on to explain how to write and use words.
+Specifically, we go into depth about how to specify the correct number
+of inputs and outputs a word will have and how words manipulate inputs
+to produce a desired output. We also walkthrough the process of writing
+a word step by step.
+
+\hypertarget{vocabularies}{%
+\paragraph{\texorpdfstring{\href{https://factor.netlify.app/book/vocabularies.md}{Vocabularies}:}{Vocabularies:}}\label{vocabularies}}
+
 Here, we explore vocabularies and how they are essentially Factor's
 version of a library. This tutorial shows how to import entire
 vocabularies or single words from vocabularies to use in projects.
-\#\#\#\#
-\href{https://factor.netlify.app/book/quotations_combinators.md}{Quotations
-and Combinators}: This tutorial covers quotations and combinators. It
-shows users how to push blocks of code to the stack, and how combinators
-can make use of them as inputs. It then showcases quotations and
-combinators in action with a walkthrough that shows the creation of a
-word which outputs a certain term in the fibonacci sequence based on a
-given input. We believe that this section should highlight quotations
-and combinators as important tools when developing complex programs.
-\#\#\#\#
-\href{https://factor.netlify.app/book/Super_Hello_World.md}{Super Hello
-World}: This tutorial is inspired by the Hello World tutorial that every
+
+\hypertarget{quotations-and-combinators}{%
+\paragraph{\texorpdfstring{\href{https://factor.netlify.app/book/quotations_combinators.md}{Quotations
+and
+Combinators}:}{Quotations and Combinators:}}\label{quotations-and-combinators}}
+
+This tutorial covers quotations and combinators. It shows users how to
+push blocks of code to the stack, and how combinators can make use of
+them as inputs. It then showcases quotations and combinators in action
+with a walkthrough that shows the creation of a word which outputs a
+certain term in the fibonacci sequence based on a given input. We
+believe that this section should highlight quotations and combinators as
+important tools when developing complex programs.
+
+\hypertarget{super-hello-world}{%
+\paragraph{\texorpdfstring{\href{https://factor.netlify.app/book/Super_Hello_World.md}{Super
+Hello World}:}{Super Hello World:}}\label{super-hello-world}}
+
+This tutorial is inspired by the Hello World tutorial that every
 programming language seems to have. After learning how to write a
 program that prints ``hello world'', we then learn how to write a more
 complicated program which prints ``hello world'' a specific number of
@@ -1138,7 +1151,10 @@ This database is an array of function objects. It is not too difficult
 to parse the database, but be aware that many values are heterogeneous
 (i.e.~they can have more than one possible type). ``in\_var'' for effect
 objects, for example, may be strings or the boolean value
-\texttt{false}. \#\#\#\# Search engine
+\texttt{false}.
+
+\hypertarget{search-engine}{%
+\paragraph{Search engine}\label{search-engine}}
 
 \hypertarget{overview}{%
 \subparagraph{Overview}\label{overview}}
@@ -1302,19 +1318,22 @@ focus on improving the search engine or frontend.
 
 Any modification to the database generator would likely start with
 \href{https://github.com/factor-hmc/foogle/blob/master/make-database.factor}{foogle/make-database.factor}.
-\#\#\#\# Search engine The search engine is where the most improvement
-can happen. Searching presently is very brittle to reordering of
-parameters. Right now the searching is a modification of an edit
-distance algorithm, which requires the order to match. But you don't
-always know the exact order of the input and output effects. One way of
-fixing this could be to do a bunch of searches with permuted orders and
-pick the best matching results from all of those searches. Factor
-functions don't tend to have many arguments, but this would still very
-likely slow down the search speed, if not make searching intractably
-slow. So allowing reordering of parameters would possibly require a
-change to how the search is conducted. It would be worth trying the easy
-and quick fix (search permutations) and then attempting an overhaul if
-that is too slow.
+
+\hypertarget{search-engine-1}{%
+\paragraph{Search engine}\label{search-engine-1}}
+
+The search engine is where the most improvement can happen. Searching
+presently is very brittle to reordering of parameters. Right now the
+searching is a modification of an edit distance algorithm, which
+requires the order to match. But you don't always know the exact order
+of the input and output effects. One way of fixing this could be to do a
+bunch of searches with permuted orders and pick the best matching
+results from all of those searches. Factor functions don't tend to have
+many arguments, but this would still very likely slow down the search
+speed, if not make searching intractably slow. So allowing reordering of
+parameters would possibly require a change to how the search is
+conducted. It would be worth trying the easy and quick fix (search
+permutations) and then attempting an overhaul if that is too slow.
 
 Searching relies sometimes on matching the names of parameters,
 especially for parameters without any type information. For example, if
@@ -1391,11 +1410,15 @@ Any modification to the search logic would happen in
 \href{https://github.com/factor-hmc/foogle/tree/master/src}{foogle/src}
 and would likely start with
 \href{https://github.com/factor-hmc/foogle/blob/master/src/Search.hs}{foogle/src/Search.hs}.
-\#\#\#\# Frontend There is also a lot that can be done for the frontend
-in terms of usability. The current design for the frontend was created
-quickly to just render the search results. A complete overhaul would not
-be unreasonable. Some potential directions for changes or improvements
-are listed below.
+
+\hypertarget{frontend-1}{%
+\paragraph{Frontend}\label{frontend-1}}
+
+There is also a lot that can be done for the frontend in terms of
+usability. The current design for the frontend was created quickly to
+just render the search results. A complete overhaul would not be
+unreasonable. Some potential directions for changes or improvements are
+listed below.
 
 Right now users have to search by typing in a well-formed stack effect
 query. One possible change would be to use a graphical interface to
