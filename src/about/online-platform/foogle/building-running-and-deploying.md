@@ -38,6 +38,7 @@ $ stack exec foogle-exe -- --help
 ```
 
 If you want to run the interpreter and Foogle locally, follow the instructions on running the interpreter locally and change the `endpoint` variable in [`Foogle.elm`](https://github.com/factor-hmc/simple-interpreter/blob/master/src/Foogle.elm) to point to the localhost location (e.g. `http://localhost:8001`).
+
 ### Deploying
 Supposing that ownership of the Heroku app was transferred to you, it should be sufficient to connect your Heroku account and [push to the Heroku app via git](https://devcenter.heroku.com/articles/git). This will deploy the Foogle server on Heroku. The online platform points to the Heroku app when it queries Foogle, so you won't need to make changes there unless you change the URL at which Foogle is hosted.
 
