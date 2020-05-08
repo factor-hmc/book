@@ -1476,12 +1476,7 @@ shaped arrays and scalable matrix operations.
 To read more about how we implemented the vocabulary, see the section on
 methods and design decisions. To read more about how the vocabulary
 performed, including how it compared to NumPy and the existing
-\texttt{math.matrices} vocabulary, see the evaluation section. To read
-more about possible future directions for this project, see the future
-work section.
-
-Documentation for the \texttt{tensors} vocabulary can be found
-\href{https://docs.factorcode.org/content/article-tensors.html}{here}.
+\texttt{math.matrices} vocabulary, see the evaluation section.
 
 \hypertarget{methods-and-design-decisions}{%
 \subsection{Methods and Design
@@ -1589,9 +1584,7 @@ parsing word \texttt{t\{} was shown above. A two-dimensional
 \texttt{t\{\ \{\ 0\ 1\ \}\ \{\ 2\ 3\ \}\ \}}.
 
 The features implemented during this project cover only a small fraction
-of the features provided by a library like NumPy. To read more about
-possible future directions for this project, see the future work
-section.
+of the features provided by a library like NumPy.
 
 \hypertarget{evaluation}{%
 \subsection{Evaluation}\label{evaluation}}
@@ -1611,9 +1604,7 @@ improvements we were actually providing the language.
 First, we benchmarked three individual operations: element-wise
 addition, matrix multiplication, and transposition. The performance of
 the \texttt{tensors} vocabulary came within an order of magnitude of
-NumPy with some operations, but struggled with others. To read more
-about how we achieved the performance gains we did, please see the
-\href{methods.md}{methods and design decisions} section.
+NumPy with some operations, but struggled with others. 
 
 \begin{figure}
 \centering
@@ -1671,9 +1662,7 @@ As we see in the graph above, even on this larger integration test, the
 \texttt{tensors} vocabulary performed within an order of magnitude of
 NumPy on the given dataset, meeting our goal for the project. That being
 said, it is still more than six times slower, and there is definitely
-more work to be done in this area. To learn more about what can be done
-in the future to continue to improve these metrics and add the missing
-functionality, please see the \href{future.md}{future work} section.
+more work to be done in this area. 
 
 \hypertarget{future-work-2}{%
 \subsection{Future Work}\label{future-work-2}}
@@ -1685,8 +1674,7 @@ There is still room for optimization with the currently implemented
 words. Many of the implemented words are both more than an order of
 magnitude slower than NumPy and do not scale as efficiently, most
 notably \texttt{transpose}. This is an ongoing process, as each word can
-ideally always get faster. (To read more about the current performance
-of our vocabulary, see the evaluation section.) One potential direction
+ideally always get faster. One potential direction
 to explore in looking for improvements to the performance of
 \texttt{tensor} words is to compare the underlying assembly instructions
 emitted by a C compiler such as GCC with the assembly instructions
@@ -1708,9 +1696,7 @@ implementation of \texttt{tensor}s and modifying multiple words.
 
 To improve the usability of the \texttt{tensors} vocabulary, there are a
 number of crucial features implemented with NumPy arrays that the
-\texttt{tensors} vocabulary does not provide. (To read more about the
-features we do provide as well as how they are implemented, see the
-methods and design decisions section.) These include
+\texttt{tensors} vocabulary does not provide. These include
 \href{https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html}{broadcasting},
 performing operations over specific axes (see the \emph{axes} variable
 \href{https://numpy.org/doc/stable/reference/generated/numpy.transpose.html}{here}),
