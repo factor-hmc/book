@@ -46,7 +46,7 @@ Observe that the code directly parallels, left to right, the composition of step
 
 ## How would you compare the first program tutorial approach to a cookbook style approach to learning how to accomplish things in Factor?
 
-I think both approaches offer different benefits when learning Factor. A cookbook style approach gives programmers a set of tools that they can use when programming. These tools are important since they can be used over and over when programming. The first program tutorial approach is a great introduction to Factor. It allows a new Factor programmer to jump right into Factor and start coding quickly. This style of tutorial teaches users how to combine ideas and tools that they have learned in order to create larger programs. I think utilizing a combination of both tutorials when learning Factor would be the most useful approach.
+I think both approaches offer different benefits when learning Factor. A cookbook style approach gives programmers a set of tools that they can use when programming. These tools are important since they can be used over and over when programming. The first program tutorial approach is a great introduction to Factor. It allows a new Factor programmer to jump right into Factor and start coding quickly. This style of tutorial teaches users how to combine ideas and tools that they have learned in order to create larger programs. I think utilizing a combination of both types of tutorials when learning Factor would be the most effective approach.
 
 ## They didn’t mention the prebuilt binaries (development and stable), which have lower barrier to entry than building from source.
 
