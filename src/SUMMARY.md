@@ -24,3 +24,4 @@
     - [Methods & design decisions](about/tensors/methods.md)
     - [Evaluation](about/tensors/evaluation.md)
     - [Future work](about/tensors/future.md)
+  - [Q & A](about/q&a.md)
