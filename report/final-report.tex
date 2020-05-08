@@ -1572,9 +1572,12 @@ implementing element-wise operations so that they can take either two
 \texttt{tensor}s, or a number and a \texttt{tensor} in either order.
 
 For example, the following code snippets all produce an output of
-\texttt{t\{\ 5\ 6\ 7\ \}}: - \texttt{t\{\ 0\ 1\ 2\ \}\ 5\ t+} -
-\texttt{5\ t\{\ 0\ 1\ 2\ \}\ t+} -
-\texttt{t\{\ 0\ 1\ 2\ \}\ t\{\ 5\ 5\ 5\ \}\ t+}
+\texttt{t\{\ 5\ 6\ 7\ \}}:
+\begin{itemize}
+\item \texttt{t\{\ 0\ 1\ 2\ \}\ 5\ t+}
+\item \texttt{5\ t\{\ 0\ 1\ 2\ \}\ t+}
+\item \texttt{t\{\ 0\ 1\ 2\ \}\ t\{\ 5\ 5\ 5\ \}\ t+}
+\end{itemize}
 
 We also implemented the basic words necessary to apply sequence
 operations and pretty printing.
